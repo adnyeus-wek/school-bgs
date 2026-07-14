@@ -38,14 +38,7 @@
             background-color: var(--bg-light);
             color: var(--text-main);
             line-height: 1.6;
-  <script>
-  // Simple password check before showing the page
-  var password = prompt("Enter passcode to view website draft:");
-  if (password !== "nepal2026") { 
-    alert("Incorrect password. Access denied.");
-    document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>This website draft is private.</h2>";
-  }
-</script>
+ 
 
         .ticker {
             background: var(--accent);
@@ -54,7 +47,14 @@
             font-size: 0.875rem;
             font-weight: 500;
             text-align: center;
-        }
+         <script>
+  // Simple password check before showing the page
+  var password = prompt("Enter passcode to view website draft:");
+  if (password !== "nepal2026") { 
+    alert("Incorrect password. Access denied.");
+    document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>This website draft is private.</h2>";
+  }
+</script>
 
         header {
             background: var(--white);
