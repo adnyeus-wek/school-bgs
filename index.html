@@ -41,13 +41,27 @@
             line-height: 1.6;
         }
 
-        .ticker {
-            background: var(--accent);
-            color: var(--white);
-            padding: 8px 1rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            text-align: center;
+        <!-- THE TICKER SECTION -->
+<div class="ticker-wrapper" style="background: #e11d48; color: white; padding: 10px 0; overflow: hidden; white-space: nowrap;">
+    <div class="ticker-content" style="display: inline-block; animation: scroll-left 20s linear infinite;">
+        <!-- Contact Info inside the ticker -->
+        <span>
+            📞 <strong>Phone:</strong> +977-1-5227122 
+            &nbsp;&nbsp;|&nbsp;&nbsp; 
+            ✉️ <strong>Email:</strong> vgschool@gmail.com
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            📍 <strong>Location:</strong> Lubhu, Lalitpur
+        </span>
+    </div>
+</div>
+
+<!-- Add this to your CSS for the animation -->
+<style>
+@keyframes scroll-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+</style>
         }
 
         header {
