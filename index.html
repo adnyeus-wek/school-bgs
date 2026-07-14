@@ -7,8 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    
     <!-- Open Graph tags for link previews -->
     <meta property="og:title" content="Our School Website Draft" />
     <meta property="og:description" content="Check out the layout draft for our school website." />
@@ -41,27 +40,13 @@
             line-height: 1.6;
         }
 
-        <!-- THE TICKER SECTION -->
-<div class="ticker-wrapper" style="background: #e11d48; color: white; padding: 10px 0; overflow: hidden; white-space: nowrap;">
-    <div class="ticker-content" style="display: inline-block; animation: scroll-left 20s linear infinite;">
-        <!-- Contact Info inside the ticker -->
-        <span>
-            📞 <strong>Phone:</strong> +977-1-5227122 
-            &nbsp;&nbsp;|&nbsp;&nbsp; 
-            ✉️ <strong>Email:</strong> vgschool@gmail.com
-            &nbsp;&nbsp;|&nbsp;&nbsp;
-            📍 <strong>Location:</strong> Lubhu, Lalitpur
-        </span>
-    </div>
-</div>
-
-<!-- Add this to your CSS for the animation -->
-<style>
-@keyframes scroll-left {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
-</style>
+        .ticker {
+            background: var(--accent);
+            color: var(--white);
+            padding: 8px 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-align: center;
         }
 
         header {
@@ -933,24 +918,18 @@
                 
                 <div class="info-row">
                     <strong>📍 Location</strong>
-                    <span>Mahalaxmi Municipality, Jyamirkot, Lubhu, Lalitpur, Nepal</span> 
-    </div>
-    <div class="info-row">
-        <strong>📞 Phone</strong>
-        <span>+977-1-5227122, +977-9851311845</span>
-    </div>
-    <div class="info-row">
-        <strong>✉️ Official Email</strong>
-        <span>vgschool@gmail.com</span>
-    </div>
-    <!-- NEW FACEBOOK ROW -->
-    <div class="info-row">
-        <strong>🌐 Social Media</strong>
-        <a href="https://www.facebook.com/bishwamitra.ganeshss" target="_blank" style="text-decoration: none; color: var(--secondary); font-weight: 600; display: flex; align-items: center; gap: 8px;">
-            <i class="fab fa-facebook" style="font-school-paize: 1.2rem;"></i> Follow us on Facebook
-        </a>
-    </div>
-</div>
+                    <span>Mahalaxmi Municipality, Jyamirkot, Lubhu, Lalitpur, Nepal</span>
+                </div>
+                <div class="info-row">
+                    <strong>📞 Phone</strong>
+                    <span>+977-1-5227122, +977-9851311845</span>
+                </div>
+                <div class="info-row">
+                    <strong>✉️ Official Email</strong>
+                    <span>vgschool@gmail.com</span>
+                </div>
+            </div>
+
             <div class="contact-form-box">
                 <form onsubmit="handleFormSubmit(event)">
                     <div class="form-group">
