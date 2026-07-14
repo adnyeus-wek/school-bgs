@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Bishwamitra Ganesh Higher Secondary School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Open Graph tags for link previews -->
+    <meta property="og:title" content="Our School Website Draft" />
+    <meta property="og:description" content="Check out the layout draft for our school website." />
+    <meta property="og:image" content="logo.jpg" />
+    <meta property="og:type" content="website" />
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e3a8a;
+            --accent: #d97706;
+            --text-main: #334155;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --radius: 16px;
+            --squish-transition: all 0.6s cubic-bezier(0.25, 1.15, 0.35, 1.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .ticker {
+            background: var(--accent);
+            color: var(--white);
+            padding: 8px 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-placeholder {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid var(--border);
+        }
+
+        .school-name h1 {
+            font-size: 1.15rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .school-name p {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        .hero {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.85)), url('bis1.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            color: var(--white);
+            padding: 10rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.85rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.25;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .badge {
+            background: var(--accent);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        /* QUICK STATS HOVER EXPANSION LAYOUT */
+        .quick-stats {
+            max-width: 1200px;
+            margin: -3rem auto 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            position: relative;
+            z-index: 10;
+            align-items: start;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            text-align: center;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            max-height: 160px; /* Base container layout frame bounds */
+        }
+
+        .stat-card h3 {
+            font-size: 2.25rem;
+            color: var(--secondary);
+            margin-bottom: 0.25rem;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card > p {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .extra-details {
+            opacity: 0;
+            max-height: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, max-height 0.4s ease, transform 0.3s ease;
+            color: #64748b;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            padding-top: 0.75rem;
+            border-top: 1px dashed var(--border);
+            margin-top: 0.5rem;
+        }
+
+        /* Hover Activation States */
+        .stat-card:hover {
+            max-height: 280px; 
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+            border-color: var(--secondary);
+        }
+
+        .stat-card:hover h3 {
+            color: var(--accent);
+        }
+
+        .stat-card:hover .extra-details {
+            opacity: 1;
+            max-height: 120px;
+            transform: translateY(0);
+        }
+
+        .programs-section {
+            max-width: 1000px;
+            margin: 0 auto 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+        }
+
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.2s;
+        }
+
+        .tab-btn.active {
+            color: var(--secondary);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        .tab-content {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .features-list {
+            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            list-style-type: "✓  ";
+            padding-left: 1.25rem;
+            color: #475569;
+        }
+
+        /* FLEX SQUISHY GALLERY LAYOUT */
+        .gallery-section {
+            background-color: #f1f5f9;
+            padding: 5rem 1rem;
+            overflow: hidden;
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .squish-wrapper {
+            display: flex;
+            gap: 1.25rem;
+            width: 100%;
+            min-height: 520px;
+            margin-top: 2rem;
+        }
+
+        .squish-section {
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: var(--squish-transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .squish-wrapper:not(.has-active) .squish-section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
+            border-color: var(--secondary);
+        }
+
+        .squish-section.active {
+            flex: 7; 
+            cursor: default;
+            border: 2px solid var(--secondary);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .squish-wrapper.has-active .squish-section:not(.active) {
+            flex: 1; 
+            opacity: 0.85;
+            background: #e2e8f0;
+        }
+
+        .squish-wrapper.has-active .squish-section:not(.active):hover {
+            opacity: 1;
+            background: #cbd5e1;
+            cursor: pointer;
+        }
+
+        .cover-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: var(--squish-transition);
+        }
+
+        .cover-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1.25rem;
+            transition: var(--squish-transition);
+        }
+
+        .cover-content h4 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .cover-content p {
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+
+        .click-hint {
+            margin-top: auto;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            font-weight: 700;
+            padding-top: 1rem;
+        }
+
+        /* FLOATING PANEL CLOSE CROSS BUTTON */
+        .panel-close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.25rem;
+            width: 32px;
+            height: 32px;
+            background: #f1f5f9;
+            color: #64748b;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 50;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border);
+        }
+
+        .panel-close-btn:hover {
+            background: #ef4444;
+            color: var(--white);
+            border-color: #ef4444;
+            transform: scale(1.05);
+        }
+
+        .squish-section.active .panel-close-btn {
+            display: flex; 
+        }
+
+        .squish-wrapper.has-active .squish-section:not(.active) .cover-img {
+            height: 100px;
+        }
+        .squish-wrapper.has-active .squish-section:not(.active) .cover-content p,
+        .squish-wrapper.has-active .squish-section:not(.active) .click-hint {
+            display: none;
+        }
+        .squish-wrapper.has-active .squish-section:not(.active) .cover-content h4 {
+            font-size: 0.95rem;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            white-space: nowrap;
+            margin: 10px auto;
+        }
+
+        .inner-expanded-data {
+            display: none;
+            padding: 2rem;
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            flex-grow: 1;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+        }
+
+        .squish-section.active .inner-expanded-data {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .squish-section.active .cover-content {
+            flex-direction: row;
+            gap: 2rem;
+            height: auto;
+            background: #f8fafc;
+        }
+        .squish-section.active .cover-img {
+            width: 280px;
+            height: 180px;
+            margin-bottom: 0;
+        }
+        .squish-section.active .cover-content h4 {
+            font-size: 1.6rem;
+            white-space: normal;
+        }
+        .squish-section.active .click-hint {
+            display: none; 
+        }
+
+        .photo-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.25rem;
+        }
+
+        .strip-box {
+            background: var(--bg-light);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            cursor: zoom-in;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .strip-box:hover {
+            transform: scale(1.04);
+            border-color: var(--secondary);
+        }
+
+        .strip-box img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .strip-box .strip-desc {
+            padding: 0.6rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #475569;
+            text-align: center;
+        }
+
+        /* LIGHTBOX VIEWER OVERLAY STYLES */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .lightbox-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 75vh;
+            border-radius: 8px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .lightbox-overlay.show .lightbox-img {
+            transform: scale(1);
+        }
+
+        .lightbox-caption {
+            color: var(--white);
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            color: var(--white);
+            font-size: 2.5rem;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .lightbox-close:hover {
+            opacity: 1;
+        }
+
+        .contact-section {
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            padding: 5rem 2rem;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-row {
+            margin-bottom: 1.25rem;
+        }
+
+        .info-row strong {
+            display: block;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        form {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-light);
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--secondary);
+        }
+
+        button.btn-submit {
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            padding: 0.85rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        button.btn-submit:hover {
+            background: #1d4ed8;
+        }
+
+        footer {
+            background: var(--primary);
+            color: #94a3b8;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.875rem;
+            border-top: 1px solid #1e293b;
+        }
+
+        @media (max-width: 992px) {
+            .stat-card { max-height: none !important; }
+            .extra-details { opacity: 1; max-height: none; transform: none; }
+            .squish-wrapper { flex-direction: column; min-height: auto; }
+            .squish-section.active { flex: auto; }
+            .squish-wrapper.has-active .squish-section:not(.active) { flex: auto; background: var(--white); opacity: 1; }
+            .squish-wrapper.has-active .squish-section:not(.active) .cover-content p,
+            .squish-wrapper.has-active .squish-section:not(.active) .click-hint { display: block; }
+            .squish-wrapper.has-active .squish-section:not(.active) .cover-content h4 { writing-mode: horizontal-tb; font-size: 1.25rem; margin: 0 0 0.5rem 0;}
+            .squish-wrapper.has-active .squish-section:not(.active) .cover-img { height: 240px; }
+            .squish-section.active .cover-content { flex-direction: column; gap: 0rem; background: transparent; }
+            .squish-section.active .cover-img { width: 100%; height: 240px; }
+            .nav-container { flex-direction: column; gap: 1rem; text-align: center; }
+            nav ul { gap: 1rem; }
+            .hero h2 { font-size: 2rem; }
+            .contact-container { grid-template-columns: 1fr; gap: 2.5rem; }
+            .features-list { grid-template-columns: 1fr; }
+            .panel-close-btn { top: 0.75rem; right: 0.75rem; }
+        }
+    </style>
+    
+    <script>
+      var password = prompt("Enter passcode to view website draft:");
+      if (password !== "nepal2026") { 
+        alert("Incorrect password. Access denied.");
+        window.stop(); 
+        document.dispatchEvent(new Event('DOMContentLoaded'));
+        window.onload = function() {
+            document.body.innerHTML = "<h2 style='text-align:center; margin-top:150px; font-family:sans-serif; color:#334155;'>This website draft is private. Access Denied.</h2>";
+        }
+      }
+    </script>
+</head>
+<body>
+
+    <div class="ticker">
+        📢 Notice: Admissions open for Grade 11 Technical & General Streams for the current academic session.
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="logo.jpg" class="logo-placeholder" alt="School Logo">
+                <div class="school-name">
+                    <h1>Shree Bishwamitra Ganesh Higher Secondary School</h1>
+                    <p>Mahalaxmi-8, Jyamirkot, Lalitpur</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <span class="badge">Estd. 1982 AD (2039 BS)</span>
+            <h2>A Community School For Technical Education And Vocational Training</h2>
+            <p>Empowering students through high-quality practical knowledge, active community engagement, and direct industry pipelines in Mahalaxmi, Lalitpur.</p>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE EXPANDING QUICK STATS -->
+    <section class="quick-stats">
+        <div class="stat-card">
+            <h3>700+</h3>
+            <p>Active Students Enrolled</p>
+            <div class="extra-details">
+                Spanning across Early Childhood Programs up through comprehensive higher secondary tracks (+2) and vocational engineering fields.
+            </div>
+        </div>
+        <div class="stat-card">
+            <h3>NEB</h3>
+            <p>Government Approved Affiliation</p>
+            <div class="extra-details">
+                Fully accredited secondary curriculum layouts following strict directives from the National Examination Board of Nepal.
+            </div>
+        </div>
+        <div class="stat-card">
+            <h3>TECS</h3>
+            <p>First Community Technical Program</p>
+            <div class="extra-details">
+                Pioneering professional development pipelines through practical workshop engineering training models directly within the community.
+            </div>
+        </div>
+    </section>
+
+    <section class="programs-section" id="programs">
+        <h2 class="section-title">Academic & Technical Offerings</h2>
+        <p class="section-subtitle">Bridging theoretical mastery with hands-on technical skills</p>
+        
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab(event, 'general')">General Stream (ECD - 12)</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tecs')">Technical Stream (TECS)</button>
+        </div>
+
+        <div id="general" class="tab-content active">
+            <h3>Comprehensive Standard Curriculum</h3>
+            <p style="margin-top: 0.5rem; color: #64748b;">Providing systematic development options spanning from early childhood classes up to critical higher secondary layout frameworks.</p>
+            <ul class="features-list">
+                <li>Early Childhood Development (ECD) Basics</li>
+                <li>Primary & Lower Secondary Foundational Framework</li>
+                <li>Secondary Education Exam (SEE) Prep</li>
+                <li>Plus Two (+2) Management Tracks</li>
+            </ul>
+        </div>
+
+        <div id="tecs" class="tab-content">
+            <h3>First Community Technical School Track</h3>
+            <p style="margin-top: 0.5rem; color: #64748b;">Designed to bridge traditional conceptual education with structured, hands-on mechanical and technical engineering systems workflows.</p>
+            <ul class="features-list">
+                <li>Hands-on Specialized Lab Operations</li>
+                <li>Technical Skill Architecture Frameworks</li>
+                <li>Vocational Competencies & Certification Path</li>
+                <li>Direct Professional Industry Pathways</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-container">
+            <h2 class="section-title">Life at Shree Bishwamitra Ganesh</h2>
+            <p class="section-subtitle">Click a panel card to grow it, then click any inside photo thumbnail to expand it to full-screen viewer layout mode!</p>
+            
+            <div class="squish-wrapper" id="main-squish-container">
+                
+                <div class="squish-section" id="sec-lab" onclick="runSquish(event, 'sec-lab')">
+                    <div class="panel-close-btn" onclick="closePanel(event)">&times;</div>
+                    <div class="cover-content">
+                        <img src="mis1.jpg" class="cover-img" alt="Labs Cover">
+                        <div>
+                            <h4>Hands-on Labs</h4>
+                            <p>Our students gain critical real-world experience through electrical practical engineering layouts.</p>
+                        </div>
+                        <span class="click-hint">Click to Expand &rarr;</span>
+                    </div>
+                    <div class="inner-expanded-data">
+                        <p style="color: #475569; margin-bottom: 1rem;">Our specialized vocational workshop rooms enable electrical engineering students to directly design, wire, and analyze industrial panels and configurations.</p>
+                        <div class="photo-strip">
+                            <div class="strip-box" onclick="openLightbox(event, this)">
+                               <img src="mis1.jpg" alt="Technical Wiring Operations">
+                               <div class="strip-desc">Technical Wiring Operations</div>
+                            </div>
+                            <div class="strip-box" onclick="openLightbox(event, this)">
+                               <img src="lab1.jpg" alt="Electrical Installation Exercises">
+                               <div class="strip-desc">Electrical Installation Exercises</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="squish-section" id="sec-scout" onclick="runSquish(event, 'sec-scout')">
+                    <div class="panel-close-btn" onclick="closePanel(event)">&times;</div>
+                    <div class="cover-content">
+                        <img src="scout1.jpg" class="cover-img" alt="Scouts Cover">
+                        <div>
+                            <h4>Scout Troops</h4>
+                            <p>Fostering leadership, survival skills, discipline, and community development services among our young scouts.</p>
+                        </div>
+                        <span class="click-hint">Click to Expand &rarr;</span>
+                    </div>
+                    <div class="inner-expanded-data">
+                        <p style="color: #475569; margin-bottom: 1rem;">The institutional scout programs build active leadership character frameworks through regular outdoor survival training camps and volunteer drills.</p>
+                        <div class="photo-strip">
+                            <div class="strip-box" onclick="openLightbox(event, this)">
+                                <img src="scout1.jpg" alt="Scout Troops Assembly with Administration">
+                                <div class="strip-desc">Troops Assembly</div>
+                            </div>
+                            <div class="strip-box" onclick="openLightbox(event, this)">
+                                <img src="scout2.jpg" alt="Rigging & Pioneering Drills at Camp">
+                                <div class="strip-desc">Pioneering Drills</div>
+                            </div>
+                            <div class="strip-box" onclick="openLightbox(event, this)">
+                                <img src="scout3.jpg" alt="Field Formations and Outdoor Drill Training">
+                                <div class="strip-desc">Outdoor Formations</div>
+                            </div>
+                            <div class="strip-box" onclick="openLightbox(event, this)">
+                                <img src="scout4.jpg" alt="Uniformed Scout Group Portrait">
+                                <div class="strip-desc">Scout Uniform Portrait</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="squish-section" id="sec-sports" onclick="runSquish(event, 'sec-sports')">
+                    <div class="panel-close-btn" onclick="closePanel(event)">&times;</div>
+                    <div class="cover-content">
+                        <img src="sp1.jpg" class="cover-img" alt="Sports Cover">
+                        <div>
+                            <h4>Sports Excellence</h4>
+                            <p>Celebrating the success of our student athletes bringing home championship trophies and showcasing teamwork.</p>
+                        </div>
+                        <span class="click-hint">Click to Expand &rarr;</span>
+                    </div>
+                    <div class="inner-expanded-data">
+                        <p style="color: #475569; margin-bottom: 1rem;">Physical education remains a key component of our student profile. We actively celebrate team cohesion and sportsmanship in regional tournaments.</p>
+                        <div class="photo-strip">
+                            <div class="strip-box" onclick="openLightbox(event, this)">
+                                <img src="sp1.jpg" alt="Lions Cup Girls Futsal Team Ceremony">
+                                <div class="strip-desc">Futsal Team Ceremony</div>
+                            </div>
+                            <div class="strip-box" onclick="openLightbox(event, this)">
+                                <img src="sp2.jpg" alt="Pre-Match Tactical Exercises and Warmups">
+                                <div class="strip-desc">Tactical Exercises</div>
+                            </div>
+                            <div class="strip-box" onclick="openLightbox(event, this)">
+                                <img src="sp3.jpg" alt="Celebrating the Champions Trophy presentation">
+                                <div class="strip-desc">Champions Presentation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="squish-section" id="sec-steam" onclick="runSquish(event, 'sec-steam')">
+                    <div class="panel-close-btn" onclick="closePanel(event)">&times;</div>
+                    <div class="cover-content">
+                        <img src="stem1.jpg" class="cover-img" alt="STEAM Cover">
+                        <div>
+                            <h4>STEAM Program</h4>
+                            <p>Nurturing curiosity with student-led interactive projects and engineering designs.</p>
+                        </div>
+                        <span class="click-hint">Click to Expand &rarr;</span>
+                    </div>
+                    <div class="inner-expanded-data">
+                        <p style="color: #475569; margin-bottom: 1rem;">Our Science, Technology, Engineering, Arts, and Mathematics (STEAM) showcases display interactive student designs and smart project layout modules.</p>
+                        <div class="photo-strip">
+                            <div class="strip-box" onclick="openLightbox(event, this)">
+                                <img src="stem1.jpg" alt="Power Grid System Layout Presentation">
+                                <div class="strip-desc">System Presentation</div>
+                            </div>
+                            <div class="strip-box" onclick="openLightbox(event, this)">
+                                <img src="stem2.jpg" alt="Civil Infrastructure Innovation Showcases">
+                                <div class="strip-desc">Innovation Showcases</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img src="" class="lightbox-img" id="lightbox-target-img" alt="Enlarged View">
+        <div class="lightbox-caption" id="lightbox-target-caption">Caption goes here</div>
+    </div>
+
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get in Touch With Us</h3>
+                <p style="margin-bottom: 2rem; color: #64748b;">Have questions about admission guidelines, structural scholarship applications, or open house events? Reach our admin desk directly.</p>
+                
+                <div class="info-row">
+                    <strong>📍 Location</strong>
+                    <span>Mahalaxmi Municipality, Jyamirkot, Lubhu, Lalitpur, Nepal</span>
+                </div>
+                <div class="info-row">
+                    <strong>📞 Phone</strong>
+                    <span>+977-1-5227122, +977-9851311845</span>
+                </div>
+                <div class="info-row">
+                    <strong>✉️ Official Email</strong>
+                    <span>vgschool@gmail.com</span>
+                </div>
+            </div>
+
+            <div class="contact-form-box">
+                <form onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="Ex: Ram Bahadur">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-field">Email / Phone Contact</label>
+                        <input type="text" id="contact-field" required placeholder="Ex: ram@gmail.com or 98XXXXXXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="msg">Message</label>
+                        <textarea id="msg" rows="4" required placeholder="Type your query here..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Shree Bishwamitra Ganesh Higher Secondary School. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function switchTab(event, tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-btn');
+            
+            contents.forEach(content => content.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function runSquish(event, sectionId) {
+            const target = document.getElementById(sectionId);
+            const container = document.getElementById('main-squish-container');
+            
+            if (target.classList.contains('active')) return;
+            
+            const sections = document.querySelectorAll('.squish-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            
+            target.classList.add('active');
+            container.classList.add('has-active');
+        }
+
+        function closePanel(event) {
+            event.stopPropagation(); 
+            const container = document.getElementById('main-squish-container');
+            const sections = document.querySelectorAll('.squish-section');
+            
+            sections.forEach(sec => sec.classList.remove('active'));
+            container.classList.remove('has-active');
+        }
+
+        function openLightbox(event, element) {
+            event.stopPropagation(); 
+            const img = element.querySelector('img');
+            const desc = element.querySelector('.strip-desc');
+            
+            const lightbox = document.getElementById('lightbox');
+            const targetImg = document.getElementById('lightbox-target-img');
+            const targetCaption = document.getElementById('lightbox-target-caption');
+            
+            targetImg.src = img.src;
+            targetCaption.textContent = desc ? desc.textContent : img.alt;
+            lightbox.classList.add('show');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('show');
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert("Thank you! Your inquiry message draft has been sent successfully.");
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
